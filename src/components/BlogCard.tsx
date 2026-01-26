@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import BrowserHeader from '../BrowserHeader';
-import { Blog } from '@/lib/blogs';
+import BrowserHeader from '@/components/BrowserHeader';
+import { Blog } from '@/data/blogs';
 
 interface BlogCardProps {
   blog: Blog;
@@ -40,7 +40,7 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
           </div>
 
           <div className="p-6">
-            <h3 className="text-xl font-bold mb-3 group-hover:text-hover-border transition-colors">
+            <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors lowercase">
               {blog.title}
             </h3>
             <p className="text-secondary text-sm mb-4 line-clamp-3">{blog.excerpt}</p>
@@ -57,27 +57,18 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
     );
   }
 
-  // Stacked/overlapping variant for home page preview
+  // Default variant for home page preview
   return (
     <motion.article
-      initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-      whileInView={{ opacity: 1, scale: 1, rotate: index % 2 === 0 ? 2 : -2 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      whileHover={{
-        scale: 1.05,
-        rotate: 0,
-        zIndex: 50,
-        transition: { duration: 0.3 }
-      }}
-      className="group relative"
-      style={{
-        transformOrigin: 'center',
-      }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group card-tilt"
     >
       <Link
         href={`/blog/${blog.slug}`}
-        className="block border border-card-border bg-card-bg overflow-hidden shadow-2xl"
+        className="block border border-card-border bg-card-bg overflow-hidden"
       >
         <BrowserHeader date={formattedDate} />
 
@@ -94,16 +85,16 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
         </div>
 
         <div className="p-5">
-          <h3 className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-hover-border transition-colors">
+          <h3 className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-accent transition-colors lowercase">
             {blog.title}
           </h3>
-          <p className="text-secondary text-xs mb-3 line-clamp-2">{blog.excerpt}</p>
+          <p className="text-secondary text-xs mb-3 line-clamp-2 lowercase">{blog.excerpt}</p>
 
           <div className="flex items-center justify-between">
-            <button className="btn-bordered text-xs px-3 py-1.5">
-              Read article
+            <button className="btn-bordered text-xs px-3 py-1.5 lowercase">
+              read article
             </button>
-            <span className="category-badge text-xs py-1 px-2">{blog.category}</span>
+            <span className="category-badge text-xs py-1 px-2 lowercase">{blog.category}</span>
           </div>
         </div>
       </Link>

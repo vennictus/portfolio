@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import BrowserHeader from './BrowserHeader';
 import TechBadge from './TechBadge';
-import { Project } from '@/lib/projects';
+import { Project } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;
@@ -41,13 +41,13 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
           </div>
 
           <div className="p-6">
-            <h3 className="text-2xl font-bold mb-3 group-hover:text-hover-border transition-colors">
+            <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors lowercase">
               {project.title}
             </h3>
-            <p className="text-secondary text-sm mb-4 line-clamp-3">{project.description}</p>
+            <p className="text-secondary text-sm mb-4 line-clamp-3 lowercase">{project.description}</p>
 
-            <button className="btn-bordered text-sm px-4 py-2 mb-4">
-              View project
+            <button className="btn-bordered text-sm px-4 py-2 mb-4 lowercase">
+              view project
             </button>
 
             {project.techStack && project.techStack.length > 0 && (
@@ -70,7 +70,7 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group card-tilt flex-shrink-0 w-80"
+      className="group card-tilt flex-shrink-0 w-96"
     >
       <Link href={`/projects/${project.slug}`} className="block border border-card-border bg-card-bg overflow-hidden h-full">
         <BrowserHeader date={formattedDate} />
@@ -88,13 +88,13 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
         </div>
 
         <div className="p-5">
-          <h3 className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-hover-border transition-colors">
+          <h3 className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-accent transition-colors lowercase">
             {project.title}
           </h3>
-          <p className="text-secondary text-xs mb-3 line-clamp-3">{project.description}</p>
+          <p className="text-secondary text-xs mb-3 line-clamp-3 lowercase">{project.description}</p>
 
-          <button className="btn-bordered text-xs px-3 py-1.5 mb-3">
-            View project
+          <button className="btn-bordered text-xs px-3 py-1.5 mb-3 lowercase">
+            view project
           </button>
 
           {project.techStack && project.techStack.length > 0 && (

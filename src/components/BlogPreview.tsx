@@ -2,29 +2,29 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import BlogCard from '../ui/BlogCard';
-import { getFeaturedBlogs } from '@/lib/blogs';
+import BlogCard from '@/components/BlogCard';
+import { getFeaturedBlogs } from '@/data/blogs';
 
 export default function BlogPreview() {
   const featuredBlogs = getFeaturedBlogs();
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-8"
         >
-          <div className="flex items-end justify-between mb-4">
-            <h2 className="text-4xl font-bold">From the blog</h2>
+          <div className="flex items-end justify-between mb-2">
+            <h2 className="text-3xl font-bold lowercase">from the blog</h2>
             <Link
               href="/blog"
-              className="text-secondary hover:text-foreground transition-colors flex items-center gap-2 group"
+              className="text-secondary hover:text-accent transition-colors flex items-center gap-2 group text-sm"
             >
-              <span>View all blog posts</span>
+              <span className="lowercase">view all posts</span>
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -40,7 +40,7 @@ export default function BlogPreview() {
               </svg>
             </Link>
           </div>
-          <p className="text-secondary">Thoughts, ideas, and explorations</p>
+          <p className="text-secondary text-sm lowercase">thoughts, ideas, and explorations</p>
         </motion.div>
 
         {/* Stacked/overlapping cards layout */}

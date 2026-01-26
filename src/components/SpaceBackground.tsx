@@ -31,8 +31,8 @@ export default function SpaceBackground() {
       twinklePhase: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * (canvas?.width || 0);
+        this.y = Math.random() * (canvas?.height || 0);
         this.size = Math.random() * 2;
         this.speed = Math.random() * 0.5 + 0.1;
         this.opacity = Math.random();
@@ -46,9 +46,9 @@ export default function SpaceBackground() {
         this.opacity = 0.3 + Math.sin(this.twinklePhase) * 0.7;
 
         // Reset star when it goes off screen
-        if (this.y > canvas.height) {
+        if (this.y > (canvas?.height || 0)) {
           this.y = 0;
-          this.x = Math.random() * canvas.width;
+          this.x = Math.random() * (canvas?.width || 0);
         }
       }
 

@@ -2,29 +2,29 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import ProjectCard from '../ProjectCard';
-import { getFeaturedProjects } from '@/lib/projects';
+import ProjectCard from '@/components/ProjectCard';
+import { getFeaturedProjects } from '@/data/projects';
 
 export default function ProjectsPreview() {
   const featuredProjects = getFeaturedProjects();
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-8"
         >
-          <div className="flex items-end justify-between mb-4">
-            <h2 className="text-4xl font-bold">Projects</h2>
+          <div className="flex items-end justify-between mb-2">
+            <h2 className="text-3xl font-bold lowercase">projects</h2>
             <Link
               href="/projects"
-              className="text-secondary hover:text-foreground transition-colors flex items-center gap-2 group"
+              className="text-secondary hover:text-accent transition-colors flex items-center gap-2 group text-sm"
             >
-              <span>View all projects</span>
+              <span className="lowercase">view all projects</span>
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -40,7 +40,7 @@ export default function ProjectsPreview() {
               </svg>
             </Link>
           </div>
-          <p className="text-secondary">Things I've built and experiments I've done</p>
+          <p className="text-secondary text-sm lowercase">things i've built and experiments i've done</p>
         </motion.div>
 
         {/* Horizontal scrolling cards */}

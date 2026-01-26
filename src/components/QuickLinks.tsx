@@ -33,16 +33,14 @@ const links = [
 
 export default function QuickLinks() {
   return (
-    <section className="py-16">
+    <section className="py-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-2xl font-bold mb-8">Quick links</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
           {links.map((link, index) => {
             const Icon = link.icon;
 
@@ -58,18 +56,18 @@ export default function QuickLinks() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative flex items-center justify-between p-6 border border-card-border bg-card-bg hover:border-hover-border transition-all duration-300 overflow-hidden"
+                className="group relative flex items-center justify-between p-4 border border-card-border bg-card-bg hover:border-accent transition-all duration-300 overflow-hidden"
               >
                 {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
 
                 <div className="relative z-10 flex items-center gap-4">
-                  <Icon className="text-2xl text-secondary group-hover:text-foreground transition-colors duration-300" />
-                  <span className="font-medium text-foreground">{link.name}</span>
+                  <Icon className="text-2xl text-secondary group-hover:text-accent transition-colors duration-300" />
+                  <span className="font-medium text-foreground lowercase">{link.name}</span>
                 </div>
 
                 <svg
-                  className="relative z-10 w-5 h-5 text-secondary group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                  className="relative z-10 w-5 h-5 text-secondary group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

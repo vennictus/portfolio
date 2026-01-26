@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32">
+    <section className="relative flex flex-col items-center justify-center px-6 pt-32 pb-16">
       <div className="max-w-6xl w-full mx-auto">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -16,16 +16,16 @@ export default function Hero() {
             className="flex-1 text-left"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-float"
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Hello.
+              hello.
               <br />
-              I'm{' '}
+              i'm{' '}
               <span className="inline-block border-b-4 border-foreground">
-                [Your Name]
+                [your name]
               </span>
               .
             </motion.h1>
@@ -36,23 +36,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              I'm a developer, designer, and creator. Welcome to my corner of the internet
-              where I document my journey through code, design, and discovery.
+              a developer, designer, and creator. welcome to my corner of the internet
+              where i document my journey through code, design, and discovery.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-8"
-            >
-              <a
-                href="#quicklinks"
-                className="btn-bordered inline-block px-6 py-3"
-              >
-                Explore my work
-              </a>
-            </motion.div>
           </motion.div>
 
           {/* Circular Profile Picture */}
@@ -62,20 +48,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative flex-shrink-0"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
               {/* Outer glow ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full border border-card-border animate-pulse-glow"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
+              <div className="absolute inset-0 rounded-full border border-card-border opacity-30" />
 
               {/* Middle ring */}
               <motion.div
@@ -121,26 +96,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          className="w-[1px] h-16 bg-linear-to-b from-transparent via-secondary to-transparent"
-          animate={{
-            scaleY: [1, 1.5, 1],
-            opacity: [0.3, 1, 0.3],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      </motion.div>
     </section>
   );
 }

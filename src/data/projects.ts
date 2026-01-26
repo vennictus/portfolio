@@ -113,7 +113,7 @@ export function getProjectBySlug(slug: string): Project | undefined {
 }
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((project) => project.featured).slice(0, 4);
+  return projects.filter((project) => project.featured).slice(0, 3);
 }
 
 export function getAllProjects(): Project[] {

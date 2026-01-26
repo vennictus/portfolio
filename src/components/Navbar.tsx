@@ -19,9 +19,9 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: 'About', href: '/' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Projects', href: '/projects' },
+    { name: 'about', href: '/' },
+    { name: 'blog', href: '/blog' },
+    { name: 'projects', href: '/projects' },
   ];
 
   const isActive = (href: string) => {
@@ -42,7 +42,7 @@ export default function Navbar() {
         layout
         className={`flex items-center gap-1 transition-all duration-500 ${
           isScrolled
-            ? 'bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-6 py-3 shadow-2xl'
+            ? 'bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-4 py-1.5 shadow-2xl'
             : 'bg-transparent'
         }`}
       >
@@ -51,13 +51,13 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative px-6 py-2 group"
+              className="relative px-4 py-1.5 group"
             >
               <motion.span
-                className={`relative z-10 font-medium transition-colors duration-300 ${
+                className={`relative z-10 font-medium transition-colors duration-300 text-sm ${
                   isActive(item.href)
                     ? 'text-foreground'
-                    : 'text-secondary group-hover:text-foreground'
+                    : 'text-secondary group-hover:text-accent'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -69,7 +69,7 @@ export default function Navbar() {
               {isActive(item.href) && (
                 <motion.div
                   layoutId="activeNav"
-                  className="absolute inset-0 bg-hover-border/20 rounded-full"
+                  className="absolute inset-0 bg-accent/20 rounded-full"
                   initial={false}
                   transition={{
                     type: 'spring',
@@ -80,7 +80,7 @@ export default function Navbar() {
               )}
 
               {/* Hover effect */}
-              <div className="absolute inset-0 bg-hover-border/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           ))}
         </AnimatePresence>

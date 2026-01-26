@@ -4,7 +4,7 @@ import Image from 'next/image';
 import SpaceBackground from '@/components/SpaceBackground';
 import Navbar from '@/components/Navbar';
 import BrowserHeader from '@/components/BrowserHeader';
-import { getBlogBySlug } from '@/lib/blogs';
+import { getBlogBySlug } from '@/data/blogs';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;

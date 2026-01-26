@@ -1,9 +1,9 @@
 import SpaceBackground from '@/components/SpaceBackground';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/sections/Hero';
+import Hero from '@/components/Hero';
 import QuickLinks from '@/components/QuickLinks';
-import BlogPreview from '@/components/sections/BlogPreview';
-import ProjectsPreview from '@/components/sections/ProjectsPreview';
+import BlogPreview from '@/components/BlogPreview';
+import ProjectsPreview from '@/components/ProjectsPreview';
 
 export default function Home() {
   return (

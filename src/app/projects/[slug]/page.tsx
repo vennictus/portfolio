@@ -6,7 +6,7 @@ import SpaceBackground from '@/components/SpaceBackground';
 import Navbar from '@/components/Navbar';
 import BrowserHeader from '@/components/BrowserHeader';
 import TechBadge from '@/components/TechBadge';
-import { getProjectBySlug } from '@/lib/projects';
+import { getProjectBySlug } from '@/data/projects';
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;

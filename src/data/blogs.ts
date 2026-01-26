@@ -85,7 +85,7 @@ Today we have sophisticated frameworks and tools that make beautiful design acce
     category: 'Business',
     date: '2024-04-08',
     image: '/images/blog-3.jpg',
-    featured: false,
+    featured: true,
   },
   {
     slug: 'designers-who-changed-everything',
