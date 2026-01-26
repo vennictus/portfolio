@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ededed;
-  --accent: #ef4444;
-  --accent-glow: rgba(239, 68, 68, 0.6);
-  --muted: #737373;
-  --card-bg: #0a0a0a;
-  --card-border: #262626;
+  --background: #0a0a0a;
+  --foreground: #e8e8e8;
+  --secondary: #888888;
+  --card-bg: #1a1a1a;
+  --card-border: #3a3a3a;
+  --hover-border: #4a4a4a;
+  --muted: #666666;
+  --space-glow: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
   --color-muted: var(--muted);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
+  --color-hover-border: var(--hover-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -38,13 +40,43 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--foreground);
   color: var(--background);
 }
 
-/* Red glow effect for active nav */
-.nav-glow {
-  text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
+/* Cosmic animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes drift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(100px) translateY(-100px); }
+}
+
+/* Utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.halftone-bg {
+  background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* macOS window styling */
@@ -80,6 +112,36 @@ body {
 
 .window-dot-green {
   background: #28c840;
+}
+
+/* Browser header for cards */
+.browser-header {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-bottom: 1px solid var(--card-border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.date-stamp {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  letter-spacing: 0.05em;
 }
 
 /* Code highlighting overrides */
@@ -145,8 +207,74 @@ code {
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--foreground);
   padding-left: 1rem;
   color: var(--muted);
   font-style: italic;
+}
+
+/* Card tilt effect */
+.card-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-tilt:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Button styles */
+.btn-bordered {
+  border: 1px solid var(--card-border);
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-bordered:hover {
+  border-color: var(--hover-border);
+  background: var(--card-bg);
+  box-shadow: 0 0 20px var(--space-glow);
+}
+
+.btn-bordered::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--space-glow);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-bordered:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Category badge */
+.category-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--secondary);
+  transition: all 0.3s ease;
+}
+
+.category-badge:hover {
+  border-color: var(--hover-border);
+  color: var(--foreground);
 }
