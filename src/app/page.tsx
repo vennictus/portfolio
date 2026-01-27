@@ -1,5 +1,3 @@
-import SpaceBackground from '@/components/SpaceBackground';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import QuickLinks from '@/components/QuickLinks';
 import BlogPreview from '@/components/BlogPreview';
@@ -8,9 +6,6 @@ import ProjectsPreview from '@/components/ProjectsPreview';
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      <SpaceBackground />
-      <Navbar />
-
       <div className="relative z-10">
         <Hero />
 
@@ -22,7 +17,7 @@ export default function Home() {
         <ProjectsPreview />
 
         {/* Spacer for bottom */}
-        <div className="h-32" />
+        <div className="h-16" />
       </div>
     </main>
   );

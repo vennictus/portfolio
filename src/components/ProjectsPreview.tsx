@@ -9,7 +9,7 @@ export default function ProjectsPreview() {
   const featuredProjects = getFeaturedProjects();
 
   return (
-    <section className="py-16 px-6">
+    <section className="py-8 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export default function ProjectsPreview() {
             <h2 className="text-3xl font-bold lowercase">projects</h2>
             <Link
               href="/projects"
-              className="text-secondary hover:text-accent transition-colors flex items-center gap-2 group text-sm"
+              className="text-secondary hover:text-[#28c840] transition-colors flex items-center gap-2 group text-sm"
             >
               <span className="lowercase">view all projects</span>
               <svg
@@ -43,19 +43,11 @@ export default function ProjectsPreview() {
           <p className="text-secondary text-sm lowercase">things i've built and experiments i've done</p>
         </motion.div>
 
-        {/* Horizontal scrolling cards */}
-        <div className="relative -mx-6 px-6 overflow-hidden">
-          <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
-            {featuredProjects.map((project, index) => (
-              <div key={project.slug} className="snap-start">
-                <ProjectCard project={project} variant="horizontal" index={index} />
-              </div>
-            ))}
-          </div>
-
-          {/* Gradient fade on edges */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-24 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-24 bg-gradient-to-l from-background to-transparent" />
+        {/* Projects grid - 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} variant="horizontal" index={index} />
+          ))}
         </div>
       </div>
 

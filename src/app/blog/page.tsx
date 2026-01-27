@@ -1,30 +1,84 @@
-import SpaceBackground from '@/components/SpaceBackground';
-import Navbar from '@/components/Navbar';
+'use client';
+
+import { motion } from 'framer-motion';
+import PageHeader from '@/components/PageHeader';
+import SectionDivider from '@/components/SectionDivider';
 import BlogCard from '@/components/BlogCard';
-import { getAllBlogs } from '@/data/blogs';
+import { allPosts } from 'contentlayer/generated';
 
 export default function BlogPage() {
-  const blogs = getAllBlogs();
+  const blogs = allPosts
+    .filter((post) => post.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const featuredBlogs = blogs.filter(post => post.featured);
+  const recentBlogs = blogs.filter(post => !post.featured);
 
   return (
     <main className="relative min-h-screen">
-      <SpaceBackground />
-      <Navbar />
-
       <div className="relative z-10 pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-5xl md:text-7xl font-bold mb-3 lowercase">blog</h1>
-            <p className="text-lg text-secondary lowercase">beep boop bop.</p>
-          </div>
+          {/* Window-style Header */}
+          <PageHeader
+            title="blog"
+            description="thoughts, tutorials, and random musings on code."
+            stats={[
+              { label: 'featured', value: 4 },
+            ]}
+            actionButton={{
+              label: 'view on hashnode',
+              url: 'https://hashnode.com/@yourusername',
+              icon: 'hashnode',
+            }}
+          />
 
-          {/* Blog grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {blogs.map((blog, index) => (
-              <BlogCard key={blog.slug} blog={blog} variant="grid" index={index} />
-            ))}
-          </div>
+          {/* Featured Blogs */}
+          {featuredBlogs.length > 0 && (
+            <div className="mb-16">
+              <SectionDivider title="featured_reads" variant="primary" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {featuredBlogs.map((blog, index) => (
+                  <BlogCard key={blog.slug} blog={blog} variant="grid" index={index} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* All Blogs */}
+          {recentBlogs.length > 0 && (
+            <div>
+              <SectionDivider
+                title={featuredBlogs.length > 0 ? 'all_posts' : 'recent_posts'}
+                variant="secondary"
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recentBlogs.map((blog, index) => (
+                  <BlogCard
+                    key={blog.slug}
+                    blog={blog}
+                    variant="grid"
+                    index={index + featuredBlogs.length}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Empty State */}
+          {blogs.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="border border-card-border bg-card-bg p-12">
+                <p className="text-secondary text-lg lowercase font-mono">
+                  {'>'} no posts found_
+                </p>
+                <p className="text-secondary text-sm lowercase mt-2">check back soon!</p>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </main>

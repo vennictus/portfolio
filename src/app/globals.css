@@ -6,10 +6,12 @@
   --secondary: #888888;
   --card-bg: #1a1a1a;
   --card-border: #2a2a2a;
-  --hover-border: #ef4444;
-  --accent: #ef4444;
+  --hover-border: #28c840;
+  --accent: #28c840;
+  --blog-accent: #28c840;
+  --project-accent: #28c840;
   --muted: #666666;
-  --dot-red: #ff5f57;
+  --dot-red: #28c840;
   --dot-green: #28c840;
 }
 
@@ -22,8 +24,10 @@
   --color-card-border: var(--card-border);
   --color-hover-border: var(--hover-border);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-blog-accent: var(--blog-accent);
+  --color-project-accent: var(--project-accent);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 * {
@@ -37,11 +41,13 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-space-grotesk), 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   text-transform: lowercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -108,7 +114,7 @@ body {
 }
 
 .window-dot-red {
-  background: #ff5f57;
+  background: #28c840;
 }
 
 .window-dot-yellow {
@@ -136,8 +142,8 @@ body {
 }
 
 .browser-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
 }
 
@@ -150,7 +156,7 @@ body {
 }
 
 .date-stamp {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.75rem;
   color: var(--secondary);
   letter-spacing: 0.05em;
@@ -166,7 +172,7 @@ pre {
 }
 
 code {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
 }
 
 /* Scrollbar styling */
@@ -188,6 +194,115 @@ code {
   background: var(--muted);
 }
 
+/* Terminal editor style for blog reader */
+.terminal-editor {
+  background: linear-gradient(135deg, #0d0d0d 0%, #0a0a0a 50%, #050505 100%);
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', 'Courier New', monospace;
+  position: relative;
+}
+
+.terminal-editor::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(40, 200, 64, 0.02) 2px,
+      rgba(40, 200, 64, 0.02) 4px
+    );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.blog-content {
+  color: #e8e8e8;
+  line-height: 2;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(40, 200, 64, 0.1);
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  color: #28c840;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(40, 200, 64, 0.3);
+  position: relative;
+  scroll-margin-top: 100px;
+}
+
+.blog-content a {
+  color: #28c840 !important;
+  text-decoration: none !important;
+  border: none !important;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.blog-content a:hover {
+  color: #28c840 !important;
+  text-shadow: 0 0 10px rgba(40, 200, 64, 0.5);
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+.blog-content li::before {
+  content: '◆';
+  position: absolute;
+  left: -1rem;
+  color: #28c840;
+  opacity: 0.4;
+  font-size: 0.6em;
+}
+
+.blog-content code {
+  background: rgba(40, 200, 64, 0.1);
+  color: #28c840;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid rgba(40, 200, 64, 0.2);
+  font-size: 0.9em;
+}
+
+.blog-content pre {
+  background: #000 !important;
+  border: 1px solid rgba(40, 200, 64, 0.3) !important;
+  padding: 1.5rem !important;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  box-shadow: 0 0 30px rgba(40, 200, 64, 0.15);
+}
+
+.blog-content blockquote {
+  border-left: 3px solid #28c840;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: #888;
+  font-style: italic;
+  background: rgba(40, 200, 64, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
 /* Prose styling for MDX */
 .prose {
   color: var(--foreground);
@@ -199,12 +314,13 @@ code {
 }
 
 .prose a {
-  color: var(--accent);
+  color: #28c840;
   text-decoration: none;
 }
 
 .prose a:hover {
-  text-decoration: underline;
+  color: #28c840;
+  text-decoration: none;
 }
 
 .prose strong {
@@ -232,7 +348,7 @@ code {
 
 .card-tilt:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 48px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 12px 48px rgba(40, 200, 64, 0.3);
   border-color: var(--accent);
 }
 
@@ -252,7 +368,7 @@ code {
 .btn-bordered:hover {
   border-color: var(--accent);
   background: var(--card-bg);
-  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 20px rgba(40, 200, 64, 0.3);
 }
 
 .btn-bordered::before {
@@ -290,4 +406,62 @@ code {
 .category-badge:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* Blog accent colors */
+.blog-accent-hover:hover {
+  color: var(--blog-accent);
+  border-color: var(--blog-accent);
+}
+
+.blog-accent-text {
+  color: var(--blog-accent);
+}
+
+.blog-accent-border {
+  border-color: var(--blog-accent);
+}
+
+.blog-card-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.blog-card-tilt:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 48px rgba(40, 200, 64, 0.3);
+  border-color: var(--blog-accent);
+}
+
+.blog-link a {
+  color: var(--blog-accent);
+  text-decoration: none;
+}
+
+.blog-link a:hover {
+  text-decoration: none;
+  color: var(--blog-accent);
+}
+
+/* Project accent colors */
+.project-accent-hover:hover {
+  color: var(--project-accent);
+  border-color: var(--project-accent);
+}
+
+.project-accent-text {
+  color: var(--project-accent);
+}
+
+.project-accent-border {
+  border-color: var(--project-accent);
+}
+
+.project-card-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card-tilt:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 48px rgba(40, 200, 64, 0.3);
+  border-color: var(--project-accent);
 }

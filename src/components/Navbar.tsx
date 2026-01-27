@@ -34,24 +34,18 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-        isScrolled ? 'top-4' : 'top-8'
-      }`}
+      className="fixed top-8 left-1/2 -translate-x-1/2 z-50"
     >
       <motion.div
         layout
-        className={`flex items-center gap-1 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-4 py-1.5 shadow-2xl'
-            : 'bg-transparent'
-        }`}
+        className="flex items-center gap-1 bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-4 py-2 shadow-2xl"
       >
         <AnimatePresence mode="wait">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="relative px-4 py-1.5 group"
+              className="relative px-4 py-2 group flex items-center"
             >
               <motion.span
                 className={`relative z-10 font-medium transition-colors duration-300 text-sm ${
@@ -86,14 +80,12 @@ export default function Navbar() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Subtle glow effect when scrolled */}
-      {isScrolled && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute inset-0 bg-white/5 rounded-full blur-xl -z-10"
-        />
-      )}
+      {/* Subtle glow effect */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="absolute inset-0 bg-white/5 rounded-full blur-xl -z-10"
+      />
     </motion.nav>
   );
 }

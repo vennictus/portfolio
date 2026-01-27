@@ -3,13 +3,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import BlogCard from '@/components/BlogCard';
-import { getFeaturedBlogs } from '@/data/blogs';
+import { allPosts } from 'contentlayer/generated';
 
 export default function BlogPreview() {
-  const featuredBlogs = getFeaturedBlogs();
+  const featuredBlogs = allPosts
+    .filter((post) => post.published && post.featured)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4);
 
   return (
-    <section className="py-16 px-6">
+    <section className="py-8 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +25,7 @@ export default function BlogPreview() {
             <h2 className="text-3xl font-bold lowercase">from the blog</h2>
             <Link
               href="/blog"
-              className="text-secondary hover:text-accent transition-colors flex items-center gap-2 group text-sm"
+              className="text-secondary hover:text-[#28c840] transition-colors flex items-center gap-2 group text-sm"
             >
               <span className="lowercase">view all posts</span>
               <svg

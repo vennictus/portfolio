@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const links = [
@@ -23,12 +23,6 @@ const links = [
     href: 'https://linkedin.com',
     external: true,
   },
-  {
-    name: 'Resume',
-    icon: FaFileAlt,
-    href: '/resume.pdf',
-    external: false,
-  },
 ];
 
 export default function QuickLinks() {
@@ -40,7 +34,7 @@ export default function QuickLinks() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
           {links.map((link, index) => {
             const Icon = link.icon;
 
