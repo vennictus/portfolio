@@ -16,10 +16,10 @@ export function Pre({ children, ...props }: ComponentPropsWithoutRef<"pre">) {
   };
 
   return (
-    <div className="relative group">
+    <div className="relative group my-4">
       <button
         onClick={handleCopy}
-        className="absolute right-2 top-2 px-2 py-1 text-xs bg-card-bg border border-card-border rounded opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute right-2 top-2 px-2 py-1 text-xs bg-card-bg border border-card-border rounded opacity-0 group-hover:opacity-100 transition-opacity z-10"
         aria-label="Copy code"
       >
         {copied ? "copied!" : "copy"}
@@ -27,7 +27,7 @@ export function Pre({ children, ...props }: ComponentPropsWithoutRef<"pre">) {
       <pre
         ref={preRef}
         {...props}
-        className="overflow-x-auto p-4 rounded-lg bg-card-bg border border-card-border"
+        className="overflow-x-auto p-3 md:p-4 rounded-lg bg-card-bg border border-card-border text-xs md:text-sm"
       >
         {children}
       </pre>

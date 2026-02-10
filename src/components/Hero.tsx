@@ -13,10 +13,16 @@ export default function Hero() {
   const [hasAutoFlipped, setHasAutoFlipped] = useState(false);
   const [currentName, setCurrentName] = useState('vennictus');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const gamerTag = 'vennictus';
   const realName = 'ishjaap singh';
   const email = 'ishjaap.singh07@gmail.com';
+
+  // Detect touch device
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   // Auto-flip animation on component mount
   useEffect(() => {
@@ -63,9 +69,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center px-6 pt-24 pb-8">
+    <section className="relative flex flex-col items-center justify-center px-4 md:px-6 pt-20 md:pt-24 pb-6 md:pb-8">
       <div className="max-w-6xl w-full mx-auto">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -74,19 +80,20 @@ export default function Hero() {
             className="flex-1 text-left"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 md:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               hello
               <br />
-              <span className="inline-flex items-baseline gap-2">
+              <span className="inline-flex items-baseline gap-2 flex-wrap">
                 <span>i'm</span>
                 <span
-                  className="inline-block cursor-pointer relative font-mono overflow-hidden"
-                  onMouseEnter={() => setIsHoveringName(true)}
-                  onMouseLeave={() => setIsHoveringName(false)}
+                  className="relative cursor-pointer font-mono"
+                  style={{ display: 'inline-block', minWidth: '13ch' }}
+                  onMouseEnter={() => !isTouchDevice && setIsHoveringName(true)}
+                  onMouseLeave={() => !isTouchDevice && setIsHoveringName(false)}
                   onClick={() => setIsHoveringName(!isHoveringName)}
                 >
                   <AnimatePresence mode="wait">
@@ -99,23 +106,10 @@ export default function Hero() {
                         duration: 0.15,
                         ease: [0.4, 0.0, 0.2, 1]
                       }}
-                      className="inline-flex text-[#28c840]"
+                      className="inline-block text-[#28c840]"
+                      style={{ whiteSpace: 'nowrap' }}
                     >
-                      {currentName.split('').map((char, index) => (
-                        <motion.span
-                          key={`${currentName}-${index}`}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{
-                            duration: 0.05,
-                            delay: index * 0.015,
-                            ease: [0.4, 0.0, 0.2, 1]
-                          }}
-                          className="inline-block"
-                        >
-                          {char === ' ' ? '\u00A0' : char}
-                        </motion.span>
-                      ))}
+                      {currentName}
                     </motion.span>
                   </AnimatePresence>
                 </span>
@@ -123,7 +117,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div
-              className="text-lg md:text-xl text-secondary max-w-2xl leading-relaxed space-y-4"
+              className="text-base sm:text-lg md:text-xl text-secondary max-w-2xl leading-relaxed space-y-3 md:space-y-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -158,14 +152,14 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex-shrink-0 cursor-pointer"
-            onMouseEnter={() => setIsHoveringProfile(true)}
-            onMouseLeave={() => setIsHoveringProfile(false)}
+            className="relative shrink-0 cursor-pointer"
+            onMouseEnter={() => !isTouchDevice && setIsHoveringProfile(true)}
+            onMouseLeave={() => !isTouchDevice && setIsHoveringProfile(false)}
             onClick={() => setIsHoveringProfile(!isHoveringProfile)}
             style={{ perspective: '1000px' }}
           >
             <motion.div
-              className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72"
+              className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72"
               animate={{
                 rotateY: shouldFlip ? 180 : 0,
               }}
@@ -245,20 +239,20 @@ export default function Hero() {
 
                 {/* Action buttons container */}
                 <div className="absolute inset-8 rounded-full border-2 border-[#28c840] shadow-2xl bg-card-bg flex items-center justify-center">
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2 md:gap-4">
                     {/* Resume Open Button */}
                     <button
                       onClick={handleResumeOpen}
-                      className="group flex items-center justify-center gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-6 py-3 text-sm lowercase transition-all duration-300"
+                      className="group flex items-center justify-center gap-1.5 md:gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm lowercase transition-all duration-300"
                     >
-                      <FaDownload className="w-4 h-4" />
+                      <FaDownload className="w-3 h-3 md:w-4 md:h-4" />
                       <span>resume</span>
                     </button>
 
                     {/* Email Copy Button */}
                     <button
                       onClick={handleEmailCopy}
-                      className="group relative flex items-center justify-center gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-6 py-3 text-sm lowercase transition-all duration-300"
+                      className="group relative flex items-center justify-center gap-1.5 md:gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm lowercase transition-all duration-300"
                     >
                       <AnimatePresence mode="wait">
                         {emailCopied ? (
@@ -267,9 +261,9 @@ export default function Hero() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             exit={{ scale: 0 }}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-1.5 md:gap-2"
                           >
-                            <FaCheck className="w-4 h-4 text-[#28c840]" />
+                            <FaCheck className="w-3 h-3 md:w-4 md:h-4 text-[#28c840]" />
                             <span className="text-[#28c840]">copied!</span>
                           </motion.div>
                         ) : (
@@ -278,9 +272,9 @@ export default function Hero() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             exit={{ scale: 0 }}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-1.5 md:gap-2"
                           >
-                            <FaEnvelope className="w-4 h-4" />
+                            <FaEnvelope className="w-3 h-3 md:w-4 md:h-4" />
                             <span>email</span>
                           </motion.div>
                         )}

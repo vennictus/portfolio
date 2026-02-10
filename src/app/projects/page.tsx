@@ -12,7 +12,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="relative min-h-screen">
-      <div className="relative z-10 pt-32 pb-24 px-6">
+      <div className="relative z-10 pt-24 md:pt-32 pb-16 md:pb-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Window-style Header */}
           <PageHeader
@@ -30,9 +30,9 @@ export default function ProjectsPage() {
 
           {/* Featured Projects */}
           {featuredProjects.length > 0 && (
-            <div className="mb-16">
+            <div className="mb-12 md:mb-16">
               <SectionDivider title="featured" variant="primary" />
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 {featuredProjects.map((project, index) => (
                   <div key={project.slug} id={project.slug} className="scroll-mt-32">
                     <ProjectCard project={project} variant="stacked" index={index} />
@@ -46,7 +46,7 @@ export default function ProjectsPage() {
           {otherProjects.length > 0 && (
             <div>
               <SectionDivider title="more_projects" variant="secondary" />
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 {otherProjects.map((project, index) => (
                   <div key={project.slug} id={project.slug} className="scroll-mt-32">
                     <ProjectCard

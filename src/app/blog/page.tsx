@@ -16,7 +16,7 @@ export default function BlogPage() {
 
   return (
     <main className="relative min-h-screen">
-      <div className="relative z-10 pt-32 pb-24 px-6">
+      <div className="relative z-10 pt-24 md:pt-32 pb-16 md:pb-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Window-style Header */}
           <PageHeader
@@ -34,9 +34,9 @@ export default function BlogPage() {
 
           {/* Featured Blogs */}
           {featuredBlogs.length > 0 && (
-            <div className="mb-16">
+            <div className="mb-12 md:mb-16">
               <SectionDivider title="featured_reads" variant="primary" />
-              <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {featuredBlogs.map((blog, index) => (
                   <BlogCard key={blog.slug} blog={blog} variant="grid" index={index} />
                 ))}

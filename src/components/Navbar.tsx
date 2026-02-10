@@ -34,20 +34,20 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-8 left-1/2 -translate-x-1/2 z-50"
+      className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50"
     >
       <motion.div
         layout
-        className="flex items-center gap-1 bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-4 py-2 shadow-2xl"
+        className="flex items-center gap-1 bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-2xl"
       >
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="relative px-4 py-2 group flex items-center"
+            className="relative px-2.5 md:px-4 py-1.5 md:py-2 group flex items-center"
           >
               <motion.span
-                className={`relative z-10 font-medium transition-colors duration-300 text-sm ${isActive(item.href)
+                className={`relative z-10 font-medium transition-colors duration-300 text-xs md:text-sm ${isActive(item.href)
                     ? 'text-foreground'
                     : 'text-secondary group-hover:text-accent'
                   }`}

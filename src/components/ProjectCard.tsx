@@ -42,7 +42,7 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
           {/* Split Layout: Image Left, Content Right */}
           <div className="flex flex-col md:flex-row">
             {/* Left: Image */}
-            <div className="relative w-full md:w-2/5 bg-black flex items-center justify-center p-8">
+            <div className="relative w-full md:w-2/5 bg-black flex items-center justify-center p-4 md:p-6 lg:p-8">
               {project.image && (
                 <Image
                   src={project.image}
@@ -55,25 +55,25 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
             </div>
 
             {/* Right: Content */}
-            <div className="flex-1 p-6 flex flex-col">
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors lowercase">
+            <div className="flex-1 p-4 md:p-6 flex flex-col">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 group-hover:text-accent transition-colors lowercase">
                 {project.title}
               </h3>
 
-              <p className="text-secondary text-sm mb-4 lowercase flex-1">
+              <p className="text-secondary text-xs md:text-sm mb-3 md:mb-4 lowercase flex-1">
                 {project.description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 mb-4">
+              <div className="flex flex-wrap gap-2 md:gap-3 mb-3 md:mb-4">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-4 py-2 text-sm lowercase transition-all duration-300"
+                    className="inline-flex items-center gap-1.5 md:gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm lowercase transition-all duration-300"
                   >
-                    <FaGithub className="w-4 h-4" />
+                    <FaGithub className="w-3 h-3 md:w-4 md:h-4" />
                     github
                   </a>
                 )}
@@ -82,7 +82,7 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-[#28c840] bg-[#28c840]/10 hover:bg-[#28c840] text-[#28c840] hover:text-background px-4 py-2 text-sm lowercase transition-all duration-300"
+                    className="inline-flex items-center gap-1.5 md:gap-2 border border-[#28c840] bg-[#28c840]/10 hover:bg-[#28c840] text-[#28c840] hover:text-background px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm lowercase transition-all duration-300"
                   >
                     <FaExternalLinkAlt className="w-3 h-3" />
                     live link
@@ -116,20 +116,20 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
     >
       <Link href={`/projects#${project.slug}`} className="flex flex-col border border-card-border bg-card-bg overflow-hidden h-full">
         {/* Browser Header - 2 green dots for cards */}
-        <div className="bg-linear-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-card-border px-4 py-2.5">
+        <div className="bg-linear-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-card-border px-3 md:px-4 py-2 md:py-2.5">
           <div className="flex items-center justify-between">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-              <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+            <div className="flex gap-1.5 md:gap-2">
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
             </div>
-            <div className="text-xs text-secondary font-mono">
+            <div className="text-[10px] md:text-xs text-secondary font-mono">
               {formattedDate}
             </div>
           </div>
         </div>
 
         {/* Image */}
-        <div className="relative w-full bg-black flex items-center justify-center p-6">
+        <div className="relative w-full bg-black flex items-center justify-center p-4 md:p-6">
           {project.image && (
             <Image
               src={project.image}
@@ -141,8 +141,8 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
           )}
         </div>
 
-        <div className="p-5 flex-1 flex flex-col">
-          <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors lowercase">
+        <div className="p-4 md:p-5 flex-1 flex flex-col">
+          <h3 className="text-base md:text-lg font-bold mb-2 group-hover:text-accent transition-colors lowercase">
             {project.title}
           </h3>
           <p className="text-secondary text-xs mb-3 line-clamp-2 lowercase flex-1">{project.description}</p>

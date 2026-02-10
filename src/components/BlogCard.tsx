@@ -34,13 +34,13 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
       >
         <div className="border border-card-border bg-card-bg overflow-hidden h-full flex flex-col">
           {/* Browser Header - 2 green dots for cards */}
-          <div className="bg-linear-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-card-border px-4 py-2.5">
+          <div className="bg-linear-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-card-border px-3 md:px-4 py-2 md:py-2.5">
             <div className="flex items-center justify-between">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+              <div className="flex gap-1.5 md:gap-2">
+                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
+                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
               </div>
-              <div className="text-xs text-secondary font-mono">
+              <div className="text-[10px] md:text-xs text-secondary font-mono">
                 {formattedDate}
               </div>
             </div>
@@ -60,15 +60,15 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
               )}
             </div>
 
-            <div className="p-6 flex-1 flex flex-col">
-              <h3 className="text-xl font-bold mb-3 group-hover:text-[#28c840] transition-colors lowercase">
+            <div className="p-4 md:p-5 lg:p-6 flex-1 flex flex-col">
+              <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 group-hover:text-[#28c840] transition-colors lowercase">
                 {blog.title}
               </h3>
-              <p className="text-secondary text-sm mb-4 line-clamp-3 lowercase flex-1">{blog.excerpt}</p>
+              <p className="text-secondary text-xs md:text-sm mb-3 md:mb-4 line-clamp-3 lowercase flex-1">{blog.excerpt}</p>
             </div>
           </Link>
 
-          <div className="px-6 pb-6 flex items-center justify-between text-xs text-secondary">
+          <div className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6 flex items-center justify-between text-xs text-secondary">
             <span className="flex items-center gap-1">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />

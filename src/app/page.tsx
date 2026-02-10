@@ -9,7 +9,7 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
 
-        <div id="quicklinks" className="max-w-7xl mx-auto px-6">
+        <div id="quicklinks" className="max-w-7xl mx-auto px-4 md:px-6">
           <QuickLinks />
         </div>
 
@@ -17,7 +17,7 @@ export default function Home() {
         <ProjectsPreview />
 
         {/* Spacer for bottom */}
-        <div className="h-16" />
+        <div className="h-12 md:h-16" />
       </div>
     </main>
   );

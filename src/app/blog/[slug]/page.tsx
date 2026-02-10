@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Back button */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-secondary hover:text-[#28c840] transition-colors mb-6 group"
+            className="inline-flex items-center gap-2 text-sm md:text-base text-secondary hover:text-[#28c840] transition-colors mb-4 md:mb-6 group"
           >
             <svg
               className="w-4 h-4 group-hover:-translate-x-1 transition-transform"
@@ -76,19 +76,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <BrowserHeader date={formattedDate} />
 
             {/* Terminal header bar */}
-            <div className="bg-[#1a1a1a] border-b border-[#28c840]/20 px-6 py-3 flex items-center gap-3">
+            <div className="bg-[#1a1a1a] border-b border-[#28c840]/20 px-3 md:px-6 py-2 md:py-3 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-[#28c840] font-mono text-xs">◆</span>
                 <span className="text-[#28c840]/70 font-mono text-xs uppercase tracking-wider">reading mode</span>
               </div>
-              <div className="flex-1 flex items-center justify-end gap-4 text-xs font-mono text-secondary">
+              <div className="flex-1 flex items-center justify-start sm:justify-end gap-3 md:gap-4 text-xs font-mono text-secondary">
                 <span className="flex items-center gap-1">
                   <span className="text-[#28c840]">⚡</span>
                   {readTime} min
                 </span>
                 <span className="flex items-center gap-1">
                   <span className="text-[#28c840]">◉</span>
-                  {format(new Date(post.date), 'MMM dd, yyyy')}
+                  <span className="hidden sm:inline">{format(new Date(post.date), 'MMM dd, yyyy')}</span>
+                  <span className="inline sm:hidden">{format(new Date(post.date), 'MMM dd')}</span>
                 </span>
               </div>
             </div>
@@ -114,47 +115,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             {/* Content with terminal styling */}
-            <div className="p-12 relative">
+            <div className="p-4 md:p-8 lg:p-12 relative">
               {/* Title and meta */}
-              <div className="mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-[#28c840] drop-shadow-[0_0_15px_rgba(40,200,64,0.5)] font-mono">
+              <div className="mb-8 md:mb-12">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight text-[#28c840] drop-shadow-[0_0_15px_rgba(40,200,64,0.5)] font-mono">
                   {post.title}
                 </h1>
 
-                <div className="flex items-center gap-4 text-sm font-mono">
+                <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm font-mono">
                   <span className="text-secondary">{format(new Date(post.date), 'MMMM dd, yyyy')}</span>
-                  <span className="text-[#28c840]">◆</span>
+                  <span className="text-[#28c840] hidden sm:inline">◆</span>
                   <span className="text-secondary">{readTime} min read</span>
-                  <span className="text-[#28c840]">◆</span>
+                  <span className="text-[#28c840] hidden sm:inline">◆</span>
                   <span className="text-[#28c840]/60">{post.category}</span>
                 </div>
 
-                <div className="mt-6 pl-4 border-l-2 border-[#28c840]/30">
-                  <p className="text-lg text-secondary/90 font-mono leading-relaxed italic">
+                <div className="mt-4 md:mt-6 pl-3 md:pl-4 border-l-2 border-[#28c840]/30">
+                  <p className="text-sm md:text-base lg:text-lg text-secondary/90 font-mono leading-relaxed italic">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               {/* Separator */}
-              <div className="mb-12 flex items-center gap-3">
+              <div className="mb-8 md:mb-12 flex items-center gap-3">
                 <div className="h-px flex-1 bg-linear-to-r from-transparent via-[#28c840]/30 to-transparent" />
                 <span className="text-[#28c840]/50 text-xs font-mono">◆ ◆ ◆</span>
                 <div className="h-px flex-1 bg-linear-to-r from-transparent via-[#28c840]/30 to-transparent" />
               </div>
 
               {/* Article content with enhanced styling */}
-              <div className="font-mono text-base leading-loose blog-content">
+              <div className="font-mono text-sm md:text-base leading-relaxed md:leading-loose blog-content">
                 <MDXContent code={post.body.code} />
               </div>
             </div>
 
             {/* Terminal footer */}
-            <div className="bg-[#1a1a1a] border-t border-[#28c840]/20 px-6 py-4 flex items-center justify-between relative z-10">
-              <div className="flex items-center gap-4">
+            <div className="bg-[#1a1a1a] border-t border-[#28c840]/20 px-3 md:px-6 py-3 md:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10">
+              <div className="flex items-center gap-3 md:gap-4 flex-wrap">
                 <div className="flex items-center gap-2 font-mono text-xs text-[#28c840]/60">
                   <span>◆</span>
-                  <span>END OF DOCUMENT</span>
+                  <span className="hidden sm:inline">END OF DOCUMENT</span>
+                  <span className="inline sm:hidden">END</span>
                 </div>
                 <a
                   href="https://thestoryofcodeing.hashnode.dev/"
@@ -169,11 +171,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span>hashnode</span>
                 </a>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 md:gap-4">
                 <ShareButton title={post.title} excerpt={post.excerpt} />
                 <div className="flex items-center gap-2 font-mono text-xs text-secondary">
                   <span className="text-[#28c840]">✓</span>
-                  <span>100% LOADED</span>
+                  <span className="hidden sm:inline">100% LOADED</span>
+                  <span className="inline sm:hidden">LOADED</span>
                 </div>
               </div>
             </div>
