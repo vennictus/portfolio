@@ -11,7 +11,7 @@ const MDXImage = (props: ComponentPropsWithoutRef<"img">) => {
     <img
       {...props}
       alt={props.alt || ""}
-      className="rounded-lg my-4 w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+      className="rounded-lg my-4 w-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500"
       loading="lazy"
     />
   );

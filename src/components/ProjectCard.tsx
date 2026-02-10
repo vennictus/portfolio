@@ -49,7 +49,7 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
                   alt={project.title}
                   width={600}
                   height={400}
-                  className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-auto object-contain grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-500"
                 />
               )}
             </div>
@@ -136,7 +136,7 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
               alt={project.title}
               width={600}
               height={400}
-              className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+              className="w-full h-auto object-contain grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-500"
             />
           )}
         </div>
