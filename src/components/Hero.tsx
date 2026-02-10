@@ -16,7 +16,7 @@ export default function Hero() {
 
   const gamerTag = 'vennictus';
   const realName = 'ishjaap singh';
-  const email = 'ishjaap@example.com'; // Replace with your actual email
+  const email = 'ishjaap.singh07@gmail.com';
 
   // Auto-flip animation on component mount
   useEffect(() => {
@@ -58,14 +58,8 @@ export default function Hero() {
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
-  const handleResumeDownload = () => {
-    // Replace with your actual resume path
-    const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Add your resume file to public folder
-    link.download = 'ishjaap-resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleResumeOpen = () => {
+    window.open('/resume/Ishjaap Singh CV Jan 2026.pdf', '_blank');
   };
 
   return (
@@ -85,7 +79,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              hello.
+              hello
               <br />
               <span className="inline-flex items-baseline gap-2">
                 <span>i'm</span>
@@ -128,15 +122,35 @@ export default function Hero() {
               </span>
             </motion.h1>
 
-            <motion.p
-              className="text-lg md:text-xl text-secondary max-w-2xl leading-relaxed lowercase"
+            <motion.div
+              className="text-lg md:text-xl text-secondary max-w-2xl leading-relaxed space-y-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              a developer, designer, and creator. welcome to my corner of the internet
-              where i document my journey through code, design, and discovery.
-            </motion.p>
+              <p className="lowercase">
+                <span className="text-[#28c840] font-semibold">19 y/o developer</span> pursuing{' '}
+                <span className="text-[#28c840] font-semibold">computer engineering</span> at{' '}
+                <span className="text-[#28c840] font-semibold">tiet patiala</span>.
+              </p>
+
+              <p className="lowercase">
+                focused on <span className="text-[#28c840] font-semibold">backend engineering</span>,{' '}
+                <span className="text-[#28c840] font-semibold">system design</span>, and execution-level behavior across{' '}
+                <span className="text-[#28c840] font-semibold">typescript</span>,{' '}
+                <span className="text-[#28c840] font-semibold">go</span>, and low-level{' '}
+                <span className="text-[#28c840] font-semibold">c/c++</span> systems.
+              </p>
+
+              <p className="lowercase">
+                currently exploring <span className="text-[#28c840] font-semibold">ai agents</span> and{' '}
+                <span className="text-[#28c840] font-semibold">data-driven architectures</span>.
+              </p>
+
+              <p className="lowercase italic text-secondary/80">
+                i learn by building systems from scratch until everything makes sense.
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Circular Profile Picture with Flip */}
@@ -188,22 +202,13 @@ export default function Hero() {
 
                 {/* Profile image */}
                 <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-foreground shadow-2xl bg-card-bg">
-                  <div className="relative w-full h-full bg-muted flex items-center justify-center">
-                    {/* Placeholder - replace with actual image */}
-                    <svg
-                      className="w-24 h-24 text-secondary"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                    {/* Uncomment when you have an image */}
-                    {/* <Image
-                      src="/path-to-your-image.jpg"
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/profile/pfp.jpeg"
                       alt="Profile"
                       fill
                       className="object-cover"
-                    /> */}
+                    />
                   </div>
                 </div>
 
@@ -241,9 +246,9 @@ export default function Hero() {
                 {/* Action buttons container */}
                 <div className="absolute inset-8 rounded-full border-2 border-[#28c840] shadow-2xl bg-card-bg flex items-center justify-center">
                   <div className="flex flex-col gap-4">
-                    {/* Resume Download Button */}
+                    {/* Resume Open Button */}
                     <button
-                      onClick={handleResumeDownload}
+                      onClick={handleResumeOpen}
                       className="group flex items-center justify-center gap-2 border border-card-border hover:border-[#28c840] bg-transparent hover:bg-[#28c840]/10 text-foreground hover:text-[#28c840] px-6 py-3 text-sm lowercase transition-all duration-300"
                     >
                       <FaDownload className="w-4 h-4" />

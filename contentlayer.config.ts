@@ -56,6 +56,7 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'src/data',
   documentTypes: [Post],
+  disableImportAliasWarning: true,
   mdx: {
     rehypePlugins: [
       rehypeSlug,

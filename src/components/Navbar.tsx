@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,19 +40,17 @@ export default function Navbar() {
         layout
         className="flex items-center gap-1 bg-card-bg/80 backdrop-blur-xl border border-card-border rounded-full px-4 py-2 shadow-2xl"
       >
-        <AnimatePresence mode="wait">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative px-4 py-2 group flex items-center"
-            >
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="relative px-4 py-2 group flex items-center"
+          >
               <motion.span
-                className={`relative z-10 font-medium transition-colors duration-300 text-sm ${
-                  isActive(item.href)
+                className={`relative z-10 font-medium transition-colors duration-300 text-sm ${isActive(item.href)
                     ? 'text-foreground'
                     : 'text-secondary group-hover:text-accent'
-                }`}
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -77,7 +75,6 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           ))}
-        </AnimatePresence>
       </motion.div>
 
       {/* Subtle glow effect */}

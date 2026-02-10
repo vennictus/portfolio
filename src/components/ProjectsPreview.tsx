@@ -6,7 +6,7 @@ import ProjectCard from '@/components/ProjectCard';
 import { getFeaturedProjects } from '@/data/projects';
 
 export default function ProjectsPreview() {
-  const featuredProjects = getFeaturedProjects();
+  const featuredProjects = getFeaturedProjects().slice(0, 3);
 
   return (
     <section className="py-8 px-6">

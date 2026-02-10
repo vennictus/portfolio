@@ -19,11 +19,11 @@ export default function ProjectsPage() {
             title="projects"
             description="building cool stuff, one commit at a time."
             stats={[
-              { label: 'featured', value: 4 },
+              { label: 'featured', value: 6 },
             ]}
             actionButton={{
               label: 'view on github',
-              url: 'https://github.com/yourusername',
+              url: 'https://github.com/vennictus',
               icon: 'github',
             }}
           />

@@ -17,20 +17,21 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vennictus.vercel.app'),
   title: {
-    default: "Your Portfolio",
-    template: "%s | Your Portfolio",
+    default: "vennictus",
+    template: "%s | vennictus",
   },
-  description: "developer, designer, and creator",
+  description: "19 y/o developer pursuing Computer Engineering at TIET Patiala. Focused on backend engineering, system design, and execution-level behavior.",
   openGraph: {
-    title: "Your Portfolio",
-    description: "developer, designer, and creator",
+    title: "vennictus",
+    description: "19 y/o developer pursuing Computer Engineering at TIET Patiala. Focused on backend engineering, system design, and execution-level behavior.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Portfolio",
-    description: "developer, designer, and creator",
+    title: "vennictus",
+    description: "19 y/o developer pursuing Computer Engineering at TIET Patiala. Focused on backend engineering, system design, and execution-level behavior.",
   },
 };
 

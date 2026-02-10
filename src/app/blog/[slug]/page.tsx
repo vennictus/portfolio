@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           {/* Article card */}
-          <article className="bg-gradient-to-br from-[#0d0d0d] via-[#0a0a0a] to-[#050505] overflow-hidden terminal-editor shadow-[0_0_120px_rgba(40,200,64,0.2)] border border-[#28c840]/20">
+          <article className="bg-linear-to-br from-[#0d0d0d] via-[#0a0a0a] to-[#050505] overflow-hidden terminal-editor shadow-[0_0_120px_rgba(40,200,64,0.2)] border border-[#28c840]/20">
             <BrowserHeader date={formattedDate} />
 
             {/* Terminal header bar */}
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Featured image with terminal frame */}
             {post.image && (
-              <div className="relative w-full aspect-video bg-[#000] overflow-hidden border-b border-[#28c840]/20">
+              <div className="relative w-full aspect-video bg-black overflow-hidden border-b border-[#28c840]/20">
                 <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#0a0a0a] z-10" />
                 <div className="absolute inset-0 bg-[#28c840]/5 mix-blend-overlay" />
                 <Image
@@ -138,9 +138,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               {/* Separator */}
               <div className="mb-12 flex items-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#28c840]/30 to-transparent" />
+                <div className="h-px flex-1 bg-linear-to-r from-transparent via-[#28c840]/30 to-transparent" />
                 <span className="text-[#28c840]/50 text-xs font-mono">◆ ◆ ◆</span>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#28c840]/30 to-transparent" />
+                <div className="h-px flex-1 bg-linear-to-r from-transparent via-[#28c840]/30 to-transparent" />
               </div>
 
               {/* Article content with enhanced styling */}

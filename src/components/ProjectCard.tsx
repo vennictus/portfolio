@@ -41,14 +41,15 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
 
           {/* Split Layout: Image Left, Content Right */}
           <div className="flex flex-col md:flex-row">
-            {/* Left: Image (3:2 aspect ratio) */}
-            <div className="relative w-full md:w-2/5 aspect-3/2 bg-muted overflow-hidden">
+            {/* Left: Image */}
+            <div className="relative w-full md:w-2/5 bg-black flex items-center justify-center p-8">
               {project.image && (
                 <Image
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               )}
             </div>
@@ -76,15 +77,15 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
                     github
                   </a>
                 )}
-                {project.liveUrl && (
+                {project.liveLink && (
                   <a
-                    href={project.liveUrl}
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-[#28c840] bg-[#28c840]/10 hover:bg-[#28c840] text-[#28c840] hover:text-background px-4 py-2 text-sm lowercase transition-all duration-300"
                   >
                     <FaExternalLinkAlt className="w-3 h-3" />
-                    live demo
+                    live link
                   </a>
                 )}
               </div>
@@ -127,14 +128,15 @@ export default function ProjectCard({ project, variant = 'horizontal', index = 0
           </div>
         </div>
 
-        {/* Image with 3:2 aspect ratio */}
-        <div className="relative w-full aspect-3/2 bg-muted overflow-hidden">
+        {/* Image */}
+        <div className="relative w-full bg-black flex items-center justify-center p-6">
           {project.image && (
             <Image
               src={project.image}
               alt={project.title}
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+              width={600}
+              height={400}
+              className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           )}
         </div>

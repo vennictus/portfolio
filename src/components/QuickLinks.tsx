@@ -8,33 +8,36 @@ const links = [
   {
     name: 'GitHub',
     icon: FaGithub,
-    href: 'https://github.com',
+    href: 'https://github.com/vennictus',
     external: true,
+    label: 'code & projects',
   },
   {
     name: 'X',
     icon: FaXTwitter,
-    href: 'https://x.com',
+    href: 'https://x.com/vennictus',
     external: true,
+    label: 'thoughts & updates',
   },
   {
     name: 'LinkedIn',
     icon: FaLinkedin,
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/ishjaap-singh-1094b3320',
     external: true,
+    label: 'professional profile',
   },
 ];
 
 export default function QuickLinks() {
   return (
-    <section className="py-4">
+    <section className="py-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {links.map((link, index) => {
             const Icon = link.icon;
 
@@ -48,20 +51,29 @@ export default function QuickLinks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative flex items-center justify-between p-4 border border-card-border bg-card-bg hover:border-accent transition-all duration-300 overflow-hidden"
+                className="group relative flex items-center gap-4 p-4 border border-card-border bg-card-bg hover:border-[#28c840] transition-all duration-300 overflow-hidden"
               >
-                {/* Background glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 bg-[#28c840]/0 group-hover:bg-[#28c840]/5 transition-colors duration-300" />
 
-                <div className="relative z-10 flex items-center gap-4">
-                  <Icon className="text-2xl text-secondary group-hover:text-accent transition-colors duration-300" />
-                  <span className="font-medium text-foreground lowercase">{link.name}</span>
+                {/* Icon */}
+                <div className="relative z-10 flex-shrink-0">
+                  <Icon className="text-2xl text-secondary group-hover:text-[#28c840] transition-colors duration-300" />
                 </div>
 
+                {/* Text content */}
+                <div className="relative z-10 flex-1 min-w-0">
+                  <div className="font-medium text-sm text-foreground group-hover:text-[#28c840] lowercase transition-colors duration-300">
+                    {link.name}
+                  </div>
+                  <div className="text-xs text-secondary/60 lowercase truncate">
+                    {link.label}
+                  </div>
+                </div>
+
+                {/* Arrow */}
                 <svg
-                  className="relative z-10 w-5 h-5 text-secondary group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                  className="relative z-10 w-4 h-4 text-secondary/40 group-hover:text-[#28c840] flex-shrink-0 group-hover:translate-x-0.5 transition-all duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -70,7 +82,7 @@ export default function QuickLinks() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M7 17L17 7M17 7H7M17 7V17"
+                    d="M9 5l7 7-7 7"
                   />
                 </svg>
               </motion.a>
