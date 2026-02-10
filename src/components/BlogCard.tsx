@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Post } from 'contentlayer/generated';
 import { format } from 'date-fns';
 import { SiHashnode } from 'react-icons/si';
+import { useState } from 'react';
 
 interface BlogCardProps {
   blog: Post;
@@ -14,6 +15,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogCardProps) {
+  const [copied, setCopied] = useState(false);
   const formattedDate = `${format(new Date(blog.date), 'yyyy-MM-dd')}-${blog.slug}.pdf`;
 
   // Calculate read time
@@ -28,7 +30,7 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="group blog-card-tilt"
+        className="group blog-card-tilt w-full max-w-md"
       >
         <div className="border border-card-border bg-card-bg overflow-hidden h-full flex flex-col">
           {/* Browser Header - 2 green dots for cards */}
@@ -72,14 +74,37 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
               </svg>
               {readTime} min read
             </span>
-            <a
-              href="https://hashnode.com/@yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
-            >
-              <SiHashnode className="w-4 h-4" />
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://hashnode.com/@vennictus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
+                title="View on Hashnode"
+              >
+                <SiHashnode className="w-4 h-4" />
+              </a>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigator.clipboard.writeText(`${window.location.origin}/blog/${blog.slug}`);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
+                title="Copy link"
+              >
+                {copied ? (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </motion.article>
@@ -95,7 +120,7 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group blog-card-tilt h-full"
+      className="group blog-card-tilt h-full w-full max-w-sm"
     >
       <div className="h-full flex flex-col border border-card-border bg-card-bg overflow-hidden">
         {/* Browser Header - 2 green dots, shows date-blog.pdf */}
@@ -139,14 +164,37 @@ export default function BlogCard({ blog, variant = 'default', index = 0 }: BlogC
             </svg>
             {readTime} min
           </span>
-          <a
-            href="https://hashnode.com/@yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
-          >
-            <SiHashnode className="w-3 h-3" />
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://hashnode.com/@vennictus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
+              title="View on Hashnode"
+            >
+              <SiHashnode className="w-3 h-3" />
+            </a>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(`${window.location.origin}/blog/${blog.slug}`);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
+              className="flex items-center gap-1 text-secondary hover:text-[#28c840] transition-colors"
+              title="Copy link"
+            >
+              {copied ? (
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </motion.article>

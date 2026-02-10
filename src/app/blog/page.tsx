@@ -23,11 +23,11 @@ export default function BlogPage() {
             title="blog"
             description="thoughts, tutorials, and random musings on code."
             stats={[
-              { label: 'featured', value: 4 },
+              { label: 'featured', value: 1 },
             ]}
             actionButton={{
               label: 'view on hashnode',
-              url: 'https://hashnode.com/@yourusername',
+              url: 'https://hashnode.com/@vennictus',
               icon: 'hashnode',
             }}
           />
@@ -36,7 +36,7 @@ export default function BlogPage() {
           {featuredBlogs.length > 0 && (
             <div className="mb-16">
               <SectionDivider title="featured_reads" variant="primary" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {featuredBlogs.map((blog, index) => (
                   <BlogCard key={blog.slug} blog={blog} variant="grid" index={index} />
                 ))}
@@ -51,7 +51,7 @@ export default function BlogPage() {
                 title={featuredBlogs.length > 0 ? 'all_posts' : 'recent_posts'}
                 variant="secondary"
               />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex flex-wrap justify-center gap-6">
                 {recentBlogs.map((blog, index) => (
                   <BlogCard
                     key={blog.slug}

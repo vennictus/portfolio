@@ -5,6 +5,7 @@ import BrowserHeader from '@/components/BrowserHeader';
 import { MDXContent } from '@/components/mdx/MDXContent';
 import { allPosts } from 'contentlayer/generated';
 import { format } from 'date-fns';
+import ShareButton from '@/components/ShareButton';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -94,7 +95,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Featured image with terminal frame */}
             {post.image && (
-              <div className="relative h-96 bg-[#000] overflow-hidden border-b border-[#28c840]/20">
+              <div className="relative w-full aspect-video bg-[#000] overflow-hidden border-b border-[#28c840]/20">
                 <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#0a0a0a] z-10" />
                 <div className="absolute inset-0 bg-[#28c840]/5 mix-blend-overlay" />
                 <Image
@@ -105,9 +106,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 />
                 {/* Scanline effect */}
                 <div className="absolute inset-0 pointer-events-none opacity-10"
-                     style={{
-                       backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(40, 200, 64, 0.03) 2px, rgba(40, 200, 64, 0.03) 4px)'
-                     }}
+                  style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(40, 200, 64, 0.03) 2px, rgba(40, 200, 64, 0.03) 4px)'
+                  }}
                 />
               </div>
             )}
@@ -150,13 +151,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Terminal footer */}
             <div className="bg-[#1a1a1a] border-t border-[#28c840]/20 px-6 py-4 flex items-center justify-between relative z-10">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#28c840]/60">
-                <span>◆</span>
-                <span>END OF DOCUMENT</span>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 font-mono text-xs text-[#28c840]/60">
+                  <span>◆</span>
+                  <span>END OF DOCUMENT</span>
+                </div>
+                <a
+                  href="https://thestoryofcodeing.hashnode.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-xs text-secondary hover:text-[#28c840] transition-colors font-mono"
+                  title="Read on Hashnode"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 0 0-7.962 0l-6.37 6.37a5.63 5.63 0 0 0 0 7.962l6.37 6.37a5.63 5.63 0 0 0 7.962 0l6.37-6.37a5.63 5.63 0 0 0 0-7.962zM12 15.953a3.953 3.953 0 1 1 0-7.906 3.953 3.953 0 0 1 0 7.906z" />
+                  </svg>
+                  <span>hashnode</span>
+                </a>
               </div>
-              <div className="flex items-center gap-2 font-mono text-xs text-secondary">
-                <span className="text-[#28c840]">✓</span>
-                <span>100% LOADED</span>
+              <div className="flex items-center gap-4">
+                <ShareButton title={post.title} excerpt={post.excerpt} />
+                <div className="flex items-center gap-2 font-mono text-xs text-secondary">
+                  <span className="text-[#28c840]">✓</span>
+                  <span>100% LOADED</span>
+                </div>
               </div>
             </div>
           </article>

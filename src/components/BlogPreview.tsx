@@ -47,8 +47,8 @@ export default function BlogPreview() {
         </motion.div>
 
         {/* Stacked/overlapping cards layout */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="relative flex justify-center">
+          <div className="flex flex-wrap justify-center gap-8 lg:gap-6">
             {featuredBlogs.map((blog, index) => (
               <div key={blog.slug} className="relative" style={{ zIndex: 40 - index }}>
                 <BlogCard blog={blog} variant="default" index={index} />

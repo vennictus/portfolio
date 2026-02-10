@@ -1,0 +1,226 @@
+---
+title: "The History of Code(ing)"
+excerpt: "Discover how punch cards, early machines, Assembly, and C shaped modern software - and how code evolved from physical instructions to portable digital logic."
+date: "2026-02-02"
+category: "intrusive thoughts"
+image: "/images/history-of-codeing/title.webp"
+featured: true
+published: true
+---
+
+# The History of Code(ing)
+
+## chicken and egg….in a technical blog?
+
+So a lot of people interconnect coding and computers, as they naturally should, but if you think about it closely, it's like a chicken or egg question (chicken believer btw). In reality, you can't have a computer without coding... and you can't have coding without a computer... right?
+
+Well, that's where we can safely burst this bubble and come to a conclusion: coding predates computers, and that too by a long shot.
+
+It began in the 1800s with the textile industry.
+
+And how?
+
+Punch cards.
+
+They told the machine where to put the thread. Literally - see this hole, put in the thread. It was the first instance of making a machine bend to your will.
+
+The control we so crave over machines was born here.
+
+**1801 - The Jacquard Loom:** Joseph Marie Jacquard uses punch cards to automate fabric patterns. This is the first time "data" (holes in paper) tells a machine what to do.
+
+The great binary logic is born.
+
+## the first leetcoder
+
+Then in 1842 came Ada Lovelace, who, building on Charles Babbage's designs for the Analytical Engine - a machine he claimed could perform complex computations - wrote what is now considered the first algorithm intended for a machine, and possibly the first DSA algorithm??????
+
+Although the computer itself was never built in her lifetime, the title of the world's first programmer was bestowed upon her (leetcoder too).
+
+Before machines existed, the idea of instructing them already did.
+
+## how holes became logic
+
+We typically count using the decimal or base 10 system of ten digits.
+
+When we run out of digits, we repeat with a prefix, which I assume everyone knows already (I hope).
+
+0,1,2,3,4,5,6,7,8,9,10,11,12…. see.
+
+But we also know 0 and 1 is where it's at, and literally everything is 0 and 1… the beloved cat memes we so love are 0 and 1 too.
+
+Now, people whose attention spans are cooked might have already put 2 and 2 together and figured out how a punch card works, but for others like me still wondering, here it is.
+
+Think of them like OMR sheets we used to give in an exam.
+
+You have a question where the correct answer is option C. What do you do?
+
+You scribble your way into the 3rd hole marked C. Then the computer reads it using a scanner, detects light passing through the other options, but not through C, and marks your answer.
+
++4 marks awarded. Or -1 if you're giving the exam with my luck.
+
+Now imagine each question is an index - 1, 2, 3 - and the options are numbers, alphabets, or symbols. Our beloved fundamental characters.
+
+![Punch cards used in early computing](/images/history-of-codeing/punch-card.jpg)
+
+You punch out the hole of the character you want and feed it into the machine.
+
+The machine runs electrodes through each hole, each index, and if current passes through because paper isn't blocking it, that's a 1. If it doesn't, that's a 0.
+
+check them out and play with them here - [http://kloth.net/services/cardpunch.php](http://kloth.net/services/cardpunch.php)
+
+Information had now become physical.
+
+## the man whose work made the pad think
+
+Then came along Herman Hollerith.
+
+You might not know him, but you definitely know his banger of an invention - IBM. (ThinkPad reach farmers... yeah, this is the guy you thank.)
+
+He developed a tabulating machine that used punch cards for instructions, and technically, the coding we know today was born.
+
+This machine was used for the United States census. You could not only calculate people but also sort them.
+
+Sorting - as we know it - was born here. (yeah f u bubble sort)
+
+For the first time, machines didn't just follow instructions. They processed information, which paved the way for the processors we know today.
+
+## the intercontinental machine war
+
+Then came the 1940s, when the world was locked into one brutal focus: World War II.
+
+At the peak of the conflict, both sides raced for smarter weapons and even smarter machines. Necessity pushed innovation into overdrive.
+
+This time, the Germans reached the milestone first.
+
+In 1941, they unveiled the Z3 computer - the first fully functional, automatic, programmable digital computer. It handled complex engineering calculations humans simply couldn't keep up with anymoreâ€¦ this became the backbone of the German air force, performing their calculations for them.
+
+Machines were no longer assisting thought. They were replacing human limitation.
+
+And then, freedom fights back.
+
+In 1944, we get the American Harvard Mark I - a 50-foot electromechanical giant running on paper tape instructions and relentless precision. It could execute long automatic calculations without human intervention.
+
+Experimental computing had now entered practical reality.
+
+Then came 1945 and ENIAC - the first truly general-purpose electronic computer.
+
+Fast for its time. Brutal to operate.
+
+Programming meant physically rewiring cables and flipping switches like a giant telephone exchange.
+
+No screen. No keyboard. Just logic, patience, and a whole lot of sweat.
+
+![ENIAC computer](/images/history-of-codeing/eniac.png)
+
+## assemblyâ€¦.assemble
+
+Before the programming languages we know today and love so dearly were born, there was the Assembly era.
+
+As computers in the late 1940s grew more complex, writing raw machine code became unbearable.
+
+Engineers made mistakes. Debugging was painful. Programs took forever to build.
+
+So they created a symbolic layer over machine instructions â€” Assembly Language (yeah, the one I'm still scared of).
+
+Instead of:
+
+```
+10110000 01100001
+```
+
+You could write:
+
+```assembly
+MOV A, 97
+```
+
+Same instructions, but now way less suffering. I can't imagine what pre-assembly suffering was if assembly itself was considered a relief.
+
+Early assemblers began appearing in the 1950s. This marked the shift from hardware wrestling to actual software thinking.
+
+But Assembly was brutal in its own way:
+
+- Every processor had a unique instruction set
+- Zero portability
+- Optimization was manual
+- Memory was microscopic
+- One wrong opcode = crash city
+
+Writing Assembly wasn't programming, but more of a negotiation with the hardware.
+
+This mindset peaked with the Apollo Guidance Computer. Code wasn't stored digitally - it was physically woven into memory by hand. aka rope memory.
+
+![Apollo rope memory](/images/history-of-codeing/rope-memory.png)
+
+Engineers wrote Assembly. Factory workers threaded wires through magnetic cores to represent bits.
+
+A single mistake could put a moon mission at risk.
+
+No patches. No updates. No Version Control. No Ctrl+Z.
+
+This era forced programmers to think like the machine:
+
+- Memory cycles mattered
+- Instruction counts mattered
+- Power consumption mattered
+- Timing errors could be fatal
+
+Assembly was the last era where programmers truly understood every electron their code touched.
+
+Try telling this to the matcha-drinking, MacBook-using, Cursor user vibe-coding their way through problems.
+
+## if it ain't broke, don't fix it
+
+Then in 1954 came the big leap.
+
+At IBM, the invention of FORTRAN (Formula Translation) changed everything. For the first time, humans could write instructions closer to math than machine code and let the compiler handle the ugly translation.
+
+It quietly became the foundation for how modern languages think about structure and abstraction.
+
+And in true developer fashion - if it ain't broke, don't fix it - FORTRAN is still in use today.
+
+Then in 1959 came COBOL, designed for business, finance, and administration. While FORTRAN ruled scientific computing, COBOL became the language that ran governments, banks, and massive institutions - and honestly, still does in more places than people like to admit. Your ATM probably runs on machine logic influenced by code written decades ago.
+
+## the breaking point
+
+By the late 60s, hardware was getting faster, but software was collapsing under its own weight.
+
+Projects ran years late. Budgets exploded. Code became spaghetti logic where fixing one bug created ten more. (kinda sounds like my code)
+
+This was the Software Crisis.
+
+Computers had become too complex for humans to manage using just Assembly.
+
+We needed something higher level - a language readable enough for humans, but precise enough for machines.
+
+Something we could dictate without babysitting, something we could rely upon, and something we could run on every machine without breaking them - which, in case you didn't know, we couldn't do with Assemblyâ€¦ as it was, and still remains, hardware-specific.
+
+## the modern programming C's the light
+
+In the midst of this crisis, at Bell Labs, Dennis Ritchie created C (my goat).
+
+C was the Goldilocks language. High-level enough to be readable. Low-level enough to talk directly to hardware. Most importantly, it was portable.
+
+For the first time, you could write code once and run it on different types of computers.
+
+Ritchie and Ken Thompson then did something legendary.
+
+They used C to rewrite the Unix operating system.
+
+Before Unix, operating systems were clunky and tied to specific machines. Unix was modular, stable, and adaptable. Because C made Unix portable, it spread rapidly through universities and research labs.
+
+This wasn't just another tool.
+
+This was the moment software became independent of hardware.
+
+Every Mac, every Linux server, every Android phone today traces lineage back to this shift.
+
+The way you write code now - abstracted, portable, layered - exists because we once had to punch holes in paper just to make a machine listen.
+
+And that's the story of how control turned into language - and language turned into code.
+
+## for those looking for more
+
+check this video out - [The History of Computing](https://youtu.be/M4d3FXu9-3I)
+
+wikipedia is also really helpful - [Computer History](https://en.wikipedia.org/wiki/Computer#History)
