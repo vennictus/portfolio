@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCheck, FaArrowRight, FaDownload } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiHashnode } from 'react-icons/si';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -48,15 +49,10 @@ const arcPositions = [
 ];
 
 export default function QuickLinks() {
+  const pathname = usePathname();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [emailCopied, setEmailCopied] = useState(false);
-  const shouldAnimate = useRef(
-    typeof window !== 'undefined' ? !sessionStorage.getItem('ql-loaded') : true
-  );
-
-  useEffect(() => {
-    sessionStorage.setItem('ql-loaded', '1');
-  }, []);
+  const isHome = pathname === '/';
 
   const handleResumeOpen = () => {
     window.open('/resume/Ishjaap Singh CV Jan 2026.pdf', '_blank');
@@ -73,7 +69,7 @@ export default function QuickLinks() {
   };
 
   return (
-    <>
+    <div style={{ display: isHome ? undefined : 'none' }}>
       {/* Desktop: reverse-C arc */}
       <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 z-40" style={{ right: 'max(2rem, calc((100% - 42rem) / 2 - 8rem))' }}>
         <div className="relative">
@@ -95,15 +91,15 @@ export default function QuickLinks() {
                     handleClick(link);
                   }
                 }}
-                initial={shouldAnimate.current ? { opacity: 0, scale: 0 } : false}
+                initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={shouldAnimate.current ? {
+                transition={{
                   duration: 0.5,
                   delay: 0.8 + index * 0.1,
                   type: 'spring',
                   stiffness: 200,
                   damping: 18,
-                } : { duration: 0 }}
+                }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className="absolute flex items-center h-12 rounded-full border border-card-border/60 bg-card-bg/60 backdrop-blur-sm text-muted hover:text-accent hover:border-accent hover:shadow-lg hover:shadow-accent/15 transition-all duration-150 cursor-pointer overflow-hidden"
@@ -151,15 +147,15 @@ export default function QuickLinks() {
           {/* Resume button — always visible, left of LinkedIn */}
           <motion.button
             onClick={handleResumeOpen}
-            initial={shouldAnimate.current ? { opacity: 0, scale: 0 } : false}
+            initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={shouldAnimate.current ? {
+            transition={{
               duration: 0.5,
               delay: 1.2,
               type: 'spring',
               stiffness: 200,
               damping: 18,
-            } : { duration: 0 }}
+            }}
             className="absolute flex items-center gap-2 h-10 rounded-md border border-accent/40 bg-accent text-background font-mono text-xs font-semibold tracking-wide uppercase px-4 shadow-[0_0_18px_rgba(251,146,60,0.25)] hover:shadow-[0_0_28px_rgba(251,146,60,0.4)] hover:brightness-110 transition-all duration-200 cursor-pointer"
             style={{
               right: 60,
@@ -207,9 +203,9 @@ export default function QuickLinks() {
                     handleClick(link);
                   }
                 }}
-                initial={shouldAnimate.current ? { opacity: 0, y: 10 } : false}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={shouldAnimate.current ? { duration: 0.3, delay: 0.4 + index * 0.05 } : { duration: 0 }}
+                transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-card-border bg-card-bg text-muted hover:text-accent hover:border-accent transition-all duration-200 cursor-pointer"
                 title={link.name}
               >
@@ -224,9 +220,9 @@ export default function QuickLinks() {
           {/* Mobile resume button */}
           <motion.button
             onClick={handleResumeOpen}
-            initial={shouldAnimate.current ? { opacity: 0, y: 10 } : false}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={shouldAnimate.current ? { duration: 0.3, delay: 0.7 } : { duration: 0 }}
+            transition={{ duration: 0.3, delay: 0.7 }}
             className="flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-full border border-accent/50 bg-accent/[0.08] text-accent shadow-[0_0_12px_rgba(251,146,60,0.12)] hover:shadow-[0_0_20px_rgba(251,146,60,0.2)] transition-all duration-200 cursor-pointer"
           >
             <FaDownload className="w-3.5 h-3.5" />
@@ -234,6 +230,6 @@ export default function QuickLinks() {
           </motion.button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

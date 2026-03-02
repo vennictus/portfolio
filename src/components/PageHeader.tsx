@@ -37,7 +37,7 @@ export default function PageHeader({ title, description, stats, actionButton }: 
             href={actionButton.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 md:gap-2 text-muted hover:text-foreground text-xs md:text-sm lowercase font-mono transition-colors duration-200 shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm lowercase font-mono font-medium text-accent border border-accent/50 bg-accent/10 hover:bg-accent/20 hover:border-accent transition-all duration-200 shrink-0"
           >
             {actionButton.icon === 'github' ? (
               <FaGithub className="w-3.5 h-3.5" />

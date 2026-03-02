@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import PageHeader from '@/components/PageHeader';
-import SectionDivider from '@/components/SectionDivider';
 import ProjectCard from '@/components/ProjectCard';
 import { getAllProjects } from '@/data/projects';
 
@@ -32,21 +31,9 @@ export default function ProjectsPage() {
             }}
           />
 
-          {/* Terminal prompt */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-10 md:mb-14 font-mono text-xs text-muted/50"
-          >
-            <span className="text-accent/40">$</span> ls -la ~/projects --sort=featured
-            <span className="inline-block w-1.5 h-3.5 bg-accent/40 ml-1 animate-pulse" />
-          </motion.div>
-
           {/* Featured Projects */}
           {featuredProjects.length > 0 && (
             <div className="mb-16 md:mb-20">
-              <SectionDivider title="featured" variant="primary" />
               <div className="space-y-8 md:space-y-10">
                 {featuredProjects.map((project, index) => (
                   <div key={project.slug} id={project.slug} className="scroll-mt-32 relative">
@@ -70,7 +57,6 @@ export default function ProjectsPage() {
           {/* Other Projects */}
           {otherProjects.length > 0 && (
             <div>
-              <SectionDivider title="more_projects" variant="secondary" />
               <div className="space-y-8 md:space-y-10">
                 {otherProjects.map((project, index) => (
                   <div key={project.slug} id={project.slug} className="scroll-mt-32 relative">

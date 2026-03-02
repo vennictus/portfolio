@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SpaceBackground from "@/components/SpaceBackground";
 import Navbar from "@/components/Navbar";
+import QuickLinks from "@/components/QuickLinks";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -47,6 +48,7 @@ export default function RootLayout({
       >
         <SpaceBackground />
         <Navbar />
+        <QuickLinks />
         {children}
       </body>
     </html>

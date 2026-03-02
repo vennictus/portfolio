@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import PageHeader from '@/components/PageHeader';
-import SectionDivider from '@/components/SectionDivider';
 import BlogCard from '@/components/BlogCard';
 import { allPosts } from 'contentlayer/generated';
 
@@ -38,21 +37,9 @@ export default function BlogPage() {
             }}
           />
 
-          {/* Terminal prompt */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-10 md:mb-14 font-mono text-xs text-muted/50"
-          >
-            <span className="text-accent/40">$</span> cat posts/*.mdx | sort -r --date
-            <span className="inline-block w-1.5 h-3.5 bg-accent/40 ml-1 animate-pulse" />
-          </motion.div>
-
           {/* Featured Blogs */}
           {featuredBlogs.length > 0 && (
             <div className="mb-16 md:mb-20">
-              <SectionDivider title="featured_reads" variant="primary" />
               <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {featuredBlogs.map((blog, index) => (
                   <div key={blog.slug} className="w-full max-w-md">
@@ -66,10 +53,6 @@ export default function BlogPage() {
           {/* All Blogs */}
           {recentBlogs.length > 0 && (
             <div>
-              <SectionDivider
-                title={featuredBlogs.length > 0 ? 'all_posts' : 'recent_posts'}
-                variant="secondary"
-              />
               <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {recentBlogs.map((blog, index) => (
                   <div key={blog.slug} className="w-full max-w-md">
