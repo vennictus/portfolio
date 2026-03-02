@@ -1,8 +1,23 @@
 "use client";
 
 import { useMDXComponent } from "next-contentlayer2/hooks";
-import type { ComponentPropsWithoutRef, ComponentType } from "react";
+import type { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
 import { Pre } from "./Pre";
+
+// Extract text content from React children for ID generation
+function getTextContent(children: ReactNode): string {
+  if (typeof children === 'string') return children;
+  if (typeof children === 'number') return String(children);
+  if (Array.isArray(children)) return children.map(getTextContent).join('');
+  if (children && typeof children === 'object' && 'props' in children) {
+    return getTextContent((children as { props: { children?: ReactNode } }).props.children);
+  }
+  return '';
+}
+
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+}
 
 // Custom Image component for MDX
 const MDXImage = (props: ComponentPropsWithoutRef<"img">) => {
@@ -11,7 +26,7 @@ const MDXImage = (props: ComponentPropsWithoutRef<"img">) => {
     <img
       {...props}
       alt={props.alt || ""}
-      className="rounded-lg my-4 w-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500"
+      className="rounded-lg my-4 w-full object-cover"
       loading="lazy"
     />
   );
@@ -31,20 +46,23 @@ const mdxComponents = {
         {...rest}
         target="_blank"
         rel={[...safeRelParts].join(" ")}
-        className="text-accent underline underline-offset-4 hover:text-accent/80 transition-colors"
+        className="text-accent underline underline-offset-4 hover:text-accent-secondary transition-colors"
       />
     );
   },
   pre: Pre,
-  h1: (props: ComponentPropsWithoutRef<"h1">) => (
-    <h1 {...props} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-6 md:mt-8 mb-3 md:mb-4 lowercase" />
-  ),
-  h2: (props: ComponentPropsWithoutRef<"h2">) => (
-    <h2 {...props} className="text-xl md:text-2xl lg:text-3xl font-bold mt-5 md:mt-6 mb-2 md:mb-3 lowercase" />
-  ),
-  h3: (props: ComponentPropsWithoutRef<"h3">) => (
-    <h3 {...props} className="text-lg md:text-xl lg:text-2xl font-bold mt-4 mb-2 lowercase" />
-  ),
+  h1: (props: ComponentPropsWithoutRef<"h1">) => {
+    const id = slugify(getTextContent(props.children));
+    return <h1 id={id} {...props} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-6 md:mt-8 mb-3 md:mb-4 lowercase scroll-mt-24 text-accent" />;
+  },
+  h2: (props: ComponentPropsWithoutRef<"h2">) => {
+    const id = slugify(getTextContent(props.children));
+    return <h2 id={id} {...props} className="text-xl md:text-2xl lg:text-3xl font-bold mt-5 md:mt-6 mb-2 md:mb-3 lowercase scroll-mt-24 text-accent" />;
+  },
+  h3: (props: ComponentPropsWithoutRef<"h3">) => {
+    const id = slugify(getTextContent(props.children));
+    return <h3 id={id} {...props} className="text-lg md:text-xl lg:text-2xl font-bold mt-4 mb-2 lowercase scroll-mt-24 text-accent-secondary" />;
+  },
   p: (props: ComponentPropsWithoutRef<"p">) => (
     <p {...props} className="my-3 md:my-4 leading-relaxed lowercase" />
   ),

@@ -21,7 +21,7 @@ export default function ShareButton({ title, excerpt, url }: ShareButtonProps) {
     return (
         <button
             onClick={handleShare}
-            className="flex items-center gap-1 text-xs text-secondary hover:text-[#28c840] transition-colors font-mono"
+            className="flex items-center gap-1.5 text-xs text-muted hover:text-accent transition-colors duration-200 font-mono px-3 py-1.5 border border-transparent hover:border-card-border rounded-sm"
             title="Copy link"
         >
             {copied ? (
@@ -29,7 +29,7 @@ export default function ShareButton({ title, excerpt, url }: ShareButtonProps) {
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-[#28c840]">copied!</span>
+                    <span className="text-accent-secondary">copied!</span>
                 </>
             ) : (
                 <>

@@ -9,6 +9,7 @@ export interface Project {
   featured: boolean;
   liveLink?: string;
   githubUrl?: string;
+  fileExt?: string;
 }
 
 export const projects: Project[] = [
@@ -55,6 +56,7 @@ To validate correctness, the compiler was tested using a full Mandelbrot rendere
     techStack: ['TypeScript', 'WebAssembly', 'Compiler Design', 'Binary Encoding', 'Language Design'],
     featured: true,
     githubUrl: 'https://github.com/vennictus/orion',
+    fileExt: '.ts',
   },
   {
     slug: 'benz-graph-engine',
@@ -100,6 +102,7 @@ The goal of the project is to make database execution models concrete and unders
     techStack: ['Graph Databases', 'Query Engines', 'Gremlin', 'Execution Models', 'Data Structures'],
     featured: true,
     githubUrl: 'https://github.com/vennictus/benz',
+    fileExt: '.ts',
   },
   {
     slug: 'kilo-txt-editor',
@@ -153,6 +156,7 @@ A fully usable terminal editor built entirely from low-level primitives, demonst
     techStack: ['C', 'Systems Programming', 'Terminal Control', 'ANSI Escape Sequences', 'Low-level I/O'],
     featured: true,
     githubUrl: 'https://github.com/vennictus/kilo-txt-editor',
+    fileExt: '.c',
   },
   {
     slug: 'schlussel-object-storage',
@@ -204,6 +208,7 @@ Currently used as a storage layer in deployment tooling experiments, demonstrati
     techStack: ['Node.js', 'TypeScript', 'Object Storage', 'REST API', 'Filesystem'],
     featured: true,
     githubUrl: 'https://github.com/vennictus/schlussel',
+    fileExt: '.ts',
   },
   {
     slug: 'cslipy-cpp-toolchain',
@@ -263,6 +268,7 @@ All reduced to a single command execution.
     techStack: ['C++', 'MSYS2', 'MinGW', 'Windows', 'Automation', 'Developer Tools'],
     featured: true,
     githubUrl: 'https://github.com/vennictus/cslipy',
+    fileExt: '.cpp',
   },
   {
     slug: 'tetris-production',
@@ -324,6 +330,7 @@ This real-world deployment validated:
     featured: true,
     liveLink: 'https://tetris-nine-amber.vercel.app/',
     githubUrl: 'https://github.com/vennictus/tetris',
+    fileExt: '.tsx',
   },
 ];
 

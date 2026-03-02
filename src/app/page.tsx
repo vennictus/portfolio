@@ -1,23 +1,15 @@
 import Hero from '@/components/Hero';
 import QuickLinks from '@/components/QuickLinks';
-import BlogPreview from '@/components/BlogPreview';
-import ProjectsPreview from '@/components/ProjectsPreview';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen overflow-hidden">
       <div className="relative z-10">
-        <Hero />
-
-        <div id="quicklinks" className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Hero + QuickLinks share the same viewport */}
+        <div className="relative min-h-screen flex items-center justify-center">
+          <Hero />
           <QuickLinks />
         </div>
-
-        <BlogPreview />
-        <ProjectsPreview />
-
-        {/* Spacer for bottom */}
-        <div className="h-12 md:h-16" />
       </div>
     </main>
   );
